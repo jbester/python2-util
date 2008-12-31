@@ -23,8 +23,7 @@ Packages
   + combinatorics (combinations, permutations etc)
   + general math functions (fibonnci, factorial, mean, etc)
 
- + pyutil.sequtil - Sequence functions
-  + lisp/scheme inspired sequence functions
+ + pyutil.sequtil - lisp/scheme inspired sequence functions
 
  + pyutil.signature - Type checking decorator
 
