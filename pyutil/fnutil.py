@@ -138,7 +138,7 @@ def clock( fun, *args, **kword ):
     start = time.time()
     try:
         result = fun( *args, **kword )
-    except (SystemExit,KeyboardInterrupt):
+    except KeyboardInterrupt:
         print 'Interrupted'
         result = None
     end = time.time()
