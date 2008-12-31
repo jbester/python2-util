@@ -11,6 +11,12 @@ functions were pulled from multiple projects the author has written.  Secondly,
 included is several decorators that provide functionality common in other
 languages (e.g. memoize, function timing, and type annotations).
 
+
+Compatability
+-------------
+
+This library is tested with python 2.5.2 on ubuntu.
+
 Packages
 ---------
 
