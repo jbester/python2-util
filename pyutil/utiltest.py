@@ -35,7 +35,7 @@ import unittest
 import strutil
 import sequtil
 import fnutil
-import sysutil
+#import sysutil
 import mathutil
 
 
@@ -106,7 +106,6 @@ class UtilTest( unittest.TestCase ):
     def test_removeif( self ):
         a = range( 10 )
         evens = filter( mathutil.evenp, a )
-        odds = filter( mathutil.oddp, a )
         sequtil.removeif( mathutil.oddp, a )
 
         self.assertEqual( a, evens )

@@ -35,9 +35,9 @@ import functools
 import string 
 import decimal
 
-class SignatureType:
+class SignatureType(object):
     def __init__( self ):
-        pass
+        object.__init__( self )
     def __str__( self ):
         return ""
 
@@ -152,7 +152,7 @@ def signature( returnType, *argTypes ):
         # check parameter count
         argc = len( argTypes )
         expected_argc = fn.func_code.co_argcount
-        assert argc == expected_argc , countMismatch %(argc,actual_argc)
+        assert argc == expected_argc , countMismatch %(argc,expected_argc)
         
         @functools.wraps( fn )
         def func( *args, **kwds ):

@@ -35,7 +35,7 @@ import time
 import sys
 import traceback
 import functools 
-
+from sequtil import first
 
 def log( prefix, msg, output=sys.stderr ):
     """

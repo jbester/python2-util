@@ -89,7 +89,7 @@ def memoize( func=None, keyfn=tuple ):
     """
     if func != None:
         memo_table = {}
-        @functool.wraps( func )
+        @functools.wraps( func )
         def memoized( *args ):
             """
             Memoized Function
@@ -113,7 +113,7 @@ def clocked( fun, output = sys.stderr ):
     @param output: output stream to use
     @returns: a wrapped function
     """
-    @functool.wraps( fun )
+    @functools.wraps( fun )
     def call( *args, **kword ):
         """ 
         Call the function
@@ -138,7 +138,7 @@ def clock( fun, *args, **kword ):
     start = time.time()
     try:
         result = fun( *args, **kword )
-    except KeyboardInterrupt:
+    except (SystemExit,KeyboardInterrupt):
         print 'Interrupted'
         result = None
     end = time.time()
