@@ -225,6 +225,7 @@ def naive_factor( nval ):
     if int(root) == root:
         root = int(root) + 1
     for i in range( 2, root ):
+        # check if a multiple
         if nval % i == 0:
             result.add( i )
             result.add( nval / i )
@@ -403,6 +404,7 @@ def fibonacci( term ):
     @param term: term to return value for
     @returns: term in fibonacci sequence
     """
+    # initial terms
     if term == 0:
         return 0
     if term == 1:
@@ -414,11 +416,13 @@ def fibonacci( term ):
     val1 = 0
     val2 = 1
     pos = 2
+    # perform recurance
     while pos <= limit:
         result = val1 + val2
         val1 = val2
         val2 = result
         pos += 1
+        
     if term % 2 == 0:
         return (2 * val1 + (val2)) * (val2)
     else:
@@ -436,10 +440,12 @@ def ifibonacci( ):
 
     @returns: generator of terms in the fibonacci sequence
     """
+    # initial terms
     yield 0
     yield 1
     fib_n1 = 0
     fib_n2 = 1
+    # recurrance
     while True:
         result = fib_n1 + fib_n2
         fib_n1 = fib_n2

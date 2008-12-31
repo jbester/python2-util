@@ -234,9 +234,11 @@ def iunique( iterable, hashfn = None ):
 
     @returns: generator that returns unique items for an iterable
     """
+    # use ident if no hash funtion provided
     if not hashfn:
         hashfn = lambda x: x
     values = set( )
+    # iterate and hash each value and add each to set 
     for item in iterable:
         value = hashfn( item )
         if not value in values:

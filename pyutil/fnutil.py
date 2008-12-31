@@ -95,9 +95,12 @@ def memoize( func=None, keyfn=tuple ):
             Memoized Function
             """
             value = keyfn( args )
+            # check if parameter is in memo table
+            # if so return cached value
             if value in memo_table:
                 return memo_table[ value ]
             else:
+                # if not in table store in table
                 result = func( *args )
                 memo_table[ value ] = result
                 return result
@@ -118,6 +121,7 @@ def clocked( fun, output = sys.stderr ):
         """ 
         Call the function
         """
+        # create and output message
         msg = fun.func_name
         start = time.time()
         result = fun( *args, **kword )
@@ -139,8 +143,10 @@ def clock( fun, *args, **kword ):
     try:
         result = fun( *args, **kword )
     except KeyboardInterrupt:
+        # handles a keyboard ^C in an interactive REPL
         print 'Interrupted'
         result = None
     end = time.time()
+    # output message
     print >> sys.stderr, "Clocked %f" % (end-start)
     return result
