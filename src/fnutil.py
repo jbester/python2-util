@@ -33,6 +33,8 @@
 
 import functools
 import time
+import sys
+from functools import wraps
 
 def compose( outerfun, innerfun ):
     """ 
