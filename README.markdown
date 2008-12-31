@@ -21,7 +21,7 @@ Packages
   + combinatorics (combinations, permutations etc)
   + general math functions (fibonnci, factorial, mean, etc)
  + pyutil.sequtil - Sequence functions
-  + SRFI-1, SML, and lisp inspired sequence functions
+  + SRFI 1, SML, and lisp inspired sequence functions
  + pyutil.signature - Type checking decorator
  + pyutil.strutil - String functions
   + chomp
