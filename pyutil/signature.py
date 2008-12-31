@@ -35,6 +35,17 @@ import functools
 import string 
 import decimal
 
+_CHECK_SIGNATURES=True
+
+def disable_signatures():
+    "Disable checking of signatures"
+    global _CHECK_SIGNATURES
+    _CHECK_SIGNATURES = False
+
+def _sig_enabled():
+    global _CHECK_SIGNATURES
+    return _CHECK_SIGNATURES
+
 class SignatureType(object):
     def __init__( self ):
         object.__init__( self )
@@ -156,12 +167,15 @@ def signature( returnType, *argTypes ):
         
         @functools.wraps( fn )
         def func( *args, **kwds ):
-            # validate param types
-            for (arg,typ) in zip (args, argTypes ):
-                assert deep_check( arg, typ ), argMismatch % ( arg, typ )    
+            enabled = _sig_enabled()
+            if enabled:
+                # validate param types
+                for (arg,typ) in zip (args, argTypes ):
+                    assert deep_check( arg, typ ), argMismatch % ( arg, typ )    
             retVal = fn( *args, **kwds )
             # validate return type
-            assert deep_check(retVal,returnType),retMismatch % ( retVal, returnType )
+            if enabled:
+                assert deep_check(retVal,returnType),retMismatch % ( retVal, returnType )
             # return the result
             return retVal
         return func
