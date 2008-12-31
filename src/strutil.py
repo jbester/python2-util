@@ -1,6 +1,6 @@
 ################################################################################
-# File     : util.py
-# Function : General Utility Library
+# File     : strutil.py
+# Function : String Library
 ################################################################################
 # Newest version can be obtained at http://www.freshlime.org
 # Send comments or questions to code at freshlime dot org
@@ -31,14 +31,75 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ################################################################################
 
-"""
-General Utility functions
+import string
+import re
 
-Rough Conventions:
-Almost every one has an exception 
+VERSION = "$Id$"
 
- - Predicates tend to end with p (e.g. evenp )
- - Functions starting with i tend to return iterators (e.g. iprimes )
- - Functions that use a predicate parameter MAY end in if (e.g. removeif)
-"""
+### Text Handling
 
+def chomp( string ):
+    """
+    Perl-Like Chomp; strips line endings and returns just the string
+
+    >>> chomp( "test\\n" )
+    'test'
+
+    @param string: string to chomp
+    @return: string without ending newline
+    """
+    if string.endswith( '\r\n' ):
+        return string[:-2]
+    if string[-1] == '\r' or string[-1] == '\n':
+        return string[:-1]
+    return string
+
+def chomplines( lst ):
+    """
+    Chomp useable with readlines()
+
+    @param lst: list of strings to chomp
+    @return: list of string without line endings
+    """
+    return [ chomp( item ) for item in lst ]
+
+def istringcmp( string1, string2 ):
+    """
+    Case Insensitive String Cmp
+
+    >>> istringcmp( "hello", "HELlo" )
+    0
+
+    @param string1: string to compare
+    @param string2: string to compare
+    @return:  0 if equal 1, < 0 if string2 greater, > 0 if string1 is greater
+
+    """
+    return cmp( string1.lower(), string2.lower() )
+
+def egrep( pattern, slist ):
+    """
+    Egrep useful for input from readlines()
+
+    Search for pattern in each string in slist.  Pattern is
+    plain text representation of a regexp.
+
+    @param pattern: regular expression pattern in string form
+    @param slist: list of strings
+    @return: list of values where pattern exists in value
+    """
+    regexp = re.compile( pattern )
+    return [ txt for txt in slist if regexp.match( txt ) ]
+
+def grep( pattern, slist ):
+    """
+    Grep useful for input from readlines()
+
+    Search for pattern in each string in slist.  Pattern is
+    plain text.
+
+    @param pattern: plain text pattern
+    @param slist: list of strings
+    @return: list of values where pattern exists in value
+    """
+    return [ txt for txt in slist if pattern in txt ]
