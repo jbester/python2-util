@@ -34,10 +34,7 @@
 import time
 import sys
 import traceback
-from functools import wraps
-
-VERSION = "$Id$"
-
+import functools 
 
 
 def log( prefix, msg, output=sys.stderr ):
@@ -64,7 +61,7 @@ def trace( fun=None, prefix=None, output=sys.stdout ):
     @param prefix: prefix to supply in log
     """
     if fun != None:
-        @wraps( fun )
+        @functools.wraps( fun )
         def call( *args, **kword ):
             """ 
             Call the function

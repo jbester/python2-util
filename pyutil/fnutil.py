@@ -34,7 +34,6 @@
 import functools
 import time
 import sys
-from functools import wraps
 
 def compose( outerfun, innerfun ):
     """ 
@@ -90,7 +89,7 @@ def memoize( func=None, keyfn=tuple ):
     """
     if func != None:
         memo_table = {}
-        @wraps( func )
+        @functool.wraps( func )
         def memoized( *args ):
             """
             Memoized Function
@@ -114,7 +113,7 @@ def clocked( fun, output = sys.stderr ):
     @param output: output stream to use
     @returns: a wrapped function
     """
-    @wraps( fun )
+    @functool.wraps( fun )
     def call( *args, **kword ):
         """ 
         Call the function

@@ -1,4 +1,4 @@
-from functools import wraps
+import functools 
 import string 
 import decimal
 
@@ -121,7 +121,7 @@ def signature( returnType, *argTypes ):
         expected_argc = fn.func_code.co_argcount
         assert argc == expected_argc , countMismatch %(argc,actual_argc)
         
-        @wraps( fn )
+        @functools.wraps( fn )
         def func( *args, **kwds ):
             # validate param types
             for (arg,typ) in zip (args, argTypes ):
