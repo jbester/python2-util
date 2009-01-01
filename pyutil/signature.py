@@ -62,10 +62,7 @@ class _AnyType(SignatureType):
 class _NumericType(SignatureType):
     "Signature Type that accepts any numeric type"
     def check( self, param ):
-        for typ in [int, long, float, decimal.Decimal]:
-            if isinstance( param, typ ):
-                return True
-        return False
+        return isinstance( param, (int, long, float, decimal.Decimal))
     def __str__( self ):
         return "<Numeric>"
 
