@@ -34,6 +34,7 @@
 import functools 
 import string 
 import decimal
+import inspect
 
 _CHECK_SIGNATURES=True
 
@@ -51,6 +52,12 @@ class SignatureType(object):
         object.__init__( self )
     def __str__( self ):
         return ""
+
+class _FunctionType(SignatureType):
+    def check( self, param ):
+        return inspect.isfunction( param )
+    def __str__( self ):
+        return "<Function>"
 
 class _AnyType(SignatureType):
     "Signature Type that accepts any type"
@@ -141,6 +148,7 @@ as an untyped tupel"""
 # singleton instances of non parameteric types
 AnyType = _AnyType()
 NumericType = _NumericType()
+FunctionType = _FunctionType()
 
 def deep_check( param, typ ):
     "Perform a recursive check of types"
