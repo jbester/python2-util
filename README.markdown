@@ -40,6 +40,8 @@ Packages
   + chomp
   + grep/egrep
 
+ + pytuil.sysutil - symbol and symboltype class
+
  + pytuil.sysutil - system functions
   + logging
   + die/warn 

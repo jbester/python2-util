@@ -38,5 +38,6 @@ from mathutil import *
 from sequtil import *
 import signature 
 from strutil import *
+from symbols import *
 from sysutil import *
 
