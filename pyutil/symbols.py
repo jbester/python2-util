@@ -32,7 +32,7 @@
 ################################################################################
 
 class SymbolType(object):
-    __slots__ = ( "name" )
+    __slots__ = ( "name", )
     def __setattr__( self, instance, value ):
         raise SyntaxError( "Cannot assign to a symbol" )
     def __init__( self, name ):
