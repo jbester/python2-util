@@ -44,7 +44,7 @@ class SymbolType(object):
     def __str__( self ):
         return "<Symbol %s>"%( self.name )
          
-class _Symbol( object ):
+class SymbolTable( object ):
     def __getattr__( self, param ):
         return SymbolType( param )
     def get( self, param ):
@@ -52,6 +52,6 @@ class _Symbol( object ):
     def __setattr__( self, instance, value ):
         raise SyntaxError( "Cannot assign to a symbol" )
 
-Symbol = _Symbol()
+Symbol = SymbolTable()
 
 print 'ok'
