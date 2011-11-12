@@ -162,7 +162,7 @@ def factorial( nval ):
         ring_size = 20
         prod = [1] * ring_size
         idx = 0
-        for item in xrange( 2, nval ):
+        for item in xrange( 2, nval + 1 ):
             prod[ idx ] *= item
             idx = (idx + 1) % ring_size
         return product( prod )
